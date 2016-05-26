@@ -15,5 +15,12 @@ Generate static sites.
 
 ```shell
 npm install --save-dev camper
+
+# OR add the following to your package.json under dependencies
+
+"camper": "https://github.com/lonelyplanet/camper"
+
+# Then run it...
+
 camper src
 ```
