@@ -1,6 +1,10 @@
 # Camper
 Generate static sites.
 
+## Getting started
+
+Create a directory structure as below...
+
 ### Directory setup
 
 ```
@@ -10,6 +14,9 @@ Generate static sites.
 /src/page/data.json
 ```
 
+Each folder will represent a different page that will output after `camper` runs.
+
+For example, if you have `/src/about/index.jsx`, you'll get an `about.html` in the `dist` folder.
 
 ### Install and run
 
