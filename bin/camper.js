@@ -19,7 +19,7 @@ const version = pkg.version;
 
 program
   .version(version)
-  .option("-o, --out [out]", "Output directory")
+  .option("-d, --dest [dest]", "Destinations directory")
   .option("[source]", "Source for pages to be generated")
   .parse(process.argv);
 
@@ -31,15 +31,14 @@ const defaults = {
 const workdir = process.cwd();
 
 const dir = path.join(workdir, program.args[0]);
-const out = path.join(workdir, program.out || "dist");
+const out = path.join(workdir, program.dest || "dist");
 const pages = fs.readdirSync(dir);
 
 const compilers = {
   jsx: require("../dist/compilers/react").default,
-  hbs: "",
 };
 
-let generated = 0;
+let generated = [];
 
 pages.forEach((p) => {
   const files = fs.readdirSync(path.join(dir, p));
@@ -65,8 +64,8 @@ pages.forEach((p) => {
     mkdirp.sync(out);
     fs.writeFileSync(`${out}/${p}.html`, html, "utf-8");
 
-    generated += 1;
+    generated.push(`${program.dest}/${p}.html`);
   }
 });
 
-process.stdout.write("Generated " + generated + " pages.");
+process.stdout.write(generated.map(g => "Generated " + g).join("\n") + "\n");

@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./header";
-import Head from "./head";
+import Header from "../../shared/header";
+import Head from "../../shared/head";
 
 export default class HomePage extends React.Component {
   render() {
