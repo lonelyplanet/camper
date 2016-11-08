@@ -6,7 +6,7 @@ export default class ReactCompiler extends Compiler {
   compile({ data, page }) {
     const Component = require(page).default;
 
-    let html = ReactDOMServer.renderToString(
+    let html = ReactDOMServer.renderToStaticMarkup(
       React.createElement(Component, data)
     );
 
